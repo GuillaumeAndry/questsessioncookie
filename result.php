@@ -1,4 +1,6 @@
-<?php //@todo start PHP session ?>
+<?php //@todo start PHP session 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,16 +17,20 @@
 <body>
     <?php include '_navbar.php' ?>
     <main class="container">
-        <?php //@todo display contact form data ?>
-        <h1>Thank you for your message!</h1>
+        <h1>Thank you for your message <?= $_SESSION['name'] ?>!</h1>
         <p>
             Your message is being processed.
             <br>
-            Our team will get back to you within 48 hours.
+            Our team will get back to you within 48 hours at <?= $_SESSION['email'] ?>.
         </p>
         <p>
             Have a nice day and see you soon 🙂
         </p>
+        <h2>You've contacted us for</h2>
+        <ul>
+            <li><p>Subject: <?= $_SESSION['subject'] ?></p></li>
+            <li><p>Message: <?= $_SESSION['message'] ?></p></li>
+        </ul>
     </main>
     <?php include '_footer.php' ?>
 </body>
